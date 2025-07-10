@@ -5,10 +5,6 @@ import {
 } from "@nestjs/platform-fastify";
 import { AppModule } from "./app.module";
 
-import { fastifyStatic } from "@fastify/static";
-import { join } from "path";
-import { rootDir } from "./utils/rootDir";
-
 import { ValidationPipe } from "@nestjs/common";
 
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
@@ -17,9 +13,7 @@ async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
     new FastifyAdapter({
-      logger: {
-        file: "public/logs/app.log", // Log to a file in the public directory
-      },
+      logger: true,
       trustProxy: true, // Enable trust proxy for Fastify
       bodyLimit: 10485760, // Set body limit to 10MB
     })
