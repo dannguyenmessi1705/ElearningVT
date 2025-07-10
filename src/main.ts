@@ -27,14 +27,14 @@ async function bootstrap() {
     })
   );
 
-  await app.register(fastifyStatic, {
+  app.register(fastifyStatic, {
     root: join(rootDir, "public"),
     prefix: "/public",
   });
 
-  await app.register(fastifyHelmet);
+  app.register(fastifyHelmet);
 
-  await app.register(fastifyCompress, {
+  app.register(fastifyCompress, {
     encodings: ["gzip", "deflate"],
     global: true, // Apply compression globally
   });
