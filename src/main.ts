@@ -9,8 +9,6 @@ import { fastifyStatic } from "@fastify/static";
 import { join } from "path";
 import { rootDir } from "./utils/rootDir";
 
-import fastifyHelmet from "@fastify/helmet";
-import fastifyCompress from "@fastify/compress";
 import { ValidationPipe } from "@nestjs/common";
 
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
@@ -30,13 +28,6 @@ async function bootstrap() {
   app.register(fastifyStatic, {
     root: join(rootDir, "public"),
     prefix: "/public",
-  });
-
-  app.register(fastifyHelmet);
-
-  app.register(fastifyCompress, {
-    encodings: ["gzip", "deflate"],
-    global: true, // Apply compression globally
   });
 
   app.enableCors({
