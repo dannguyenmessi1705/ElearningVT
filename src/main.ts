@@ -25,11 +25,6 @@ async function bootstrap() {
     })
   );
 
-  app.register(fastifyStatic, {
-    root: join(rootDir, "public"),
-    prefix: "/public",
-  });
-
   app.enableCors({
     origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
