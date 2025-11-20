@@ -35,9 +35,9 @@
     "class-validator": "^0.14.2",
     "cross-env": "^7.0.3",
     "fastify": "^5.4.0",
+    "pg": "^8.16.3",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
-    "sql.js": "^1.13.0",
     "typeorm": "^0.3.25"
   },
   "devDependencies": {

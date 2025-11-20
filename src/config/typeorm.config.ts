@@ -10,13 +10,15 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
     connectionName?: string
   ): Promise<TypeOrmModuleOptions> | TypeOrmModuleOptions {
     return {
-      type: "sqljs",
-      location:
-        this.configService.get<string>("SQLITE_DATABASE") || "database.sqlite",
+      type: "postgres",
+      host: this.configService.get<string>("PG_HOST"),
+      port: this.configService.get<number>("PG_PORT"),
+      username: this.configService.get<string>("PG_USER"),
+      password: this.configService.get<string>("PG_PASSWORD"),
+      database: this.configService.get<string>("PG_DB"),
       autoLoadEntities: true,
-      autoSave: true,
       entities: [__dirname + "/../**/*.entity.{js,ts}"],
-      synchronize: true,
+      synchronize: false,
     };
   }
 }
